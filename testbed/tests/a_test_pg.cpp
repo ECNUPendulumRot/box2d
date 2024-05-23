@@ -54,6 +54,7 @@ public:
                     fixture->SetFriction(0);
                     fixture->SetRestitution(1.0);
 
+                    utils.track_fixture(fixture, ("sphere_" + std::to_string(index)).c_str());
                     index++;
                 }
             }
@@ -69,6 +70,7 @@ public:
                     fixture->SetFriction(0);
                     fixture->SetRestitution(1.0);
 
+                    utils.track_fixture(fixture, ("sphere_" + std::to_string(index)).c_str());
                     index++;
                 }
             }
@@ -88,6 +90,8 @@ public:
             m_dynamic_body->SetLinearVelocity(m_dynamic_body_velocity);
 
             b2Fixture* fixture = m_dynamic_body->CreateFixture(&circle_shape, 1.f);
+
+            utils.track_fixture(fixture, "init_velocity_sphere");
             fixture->SetFriction(0);
             fixture->SetRestitution(1.0);
         }
@@ -104,13 +108,14 @@ public:
             b2Fixture* box_fixture1 = box_body1->CreateFixture(&box_shape, 0.f);
             box_fixture1->SetFriction(0);
             box_fixture1->SetRestitution(1.0);
-
+            utils.track_fixture(box_fixture1, "box_fixture1");
             hx = m_right_box_pos.x - m_center_pos.x - 4;
             hy = m_center_pos.y - m_right_box_pos.y + sqrtf(3.0f) - 1.f;
             box_shape.SetAsBox(hx, hy);
             body_def.position = m_right_box_pos;
             b2Body* box_body2 = m_world->CreateBody(&body_def);
             b2Fixture* box_fixture2 = box_body2->CreateFixture(&box_shape, 0.f);
+            utils.track_fixture(box_fixture2, "box_fixture2");
             box_fixture2->SetFriction(0);
             box_fixture2->SetRestitution(1.0);
         }
@@ -122,4 +127,4 @@ public:
     }
 };
 
-static int testIndex = RegisterTest("Benchmark", "Circle PG Test", CircleTest::Create);
+static int testIndex = RegisterTest("Experiments", "Circle PG Test", CircleTest::Create);

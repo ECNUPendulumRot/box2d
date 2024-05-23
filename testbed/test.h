@@ -25,7 +25,7 @@
 
 #include "box2d/box2d.h"
 #include "draw.h"
-
+#include "utils.hpp"
 #include <stdlib.h>
 
 struct Settings;
@@ -135,6 +135,7 @@ protected:
 	int32 m_textIncrement;
 	b2Profile m_maxProfile;
 	b2Profile m_totalProfile;
+    Utils utils;
 };
 
 typedef Test* TestCreateFcn();
