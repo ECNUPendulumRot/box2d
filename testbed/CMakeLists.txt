@@ -74,6 +74,7 @@ set (TESTBED_SOURCE_FILES
 	tests/wrecking_ball.cpp
 
 	tests/a_test_pg.cpp
+		tests/box_position_solver.cpp
 )
 
 add_executable(testbed ${TESTBED_SOURCE_FILES})
